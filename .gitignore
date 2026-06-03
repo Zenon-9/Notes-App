@@ -22,3 +22,12 @@ lerna-debug.log*
 # temp directory
 .temp
 .tmp
+
+node_modules/
+.env
+
+# MongoDB data
+Backend/mongo_data/
+
+# Logs
+*.log
