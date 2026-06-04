@@ -1,5 +1,4 @@
 import Note from '../models/note.js';
-import mongoose from 'mongoose';
 
 // Create a new note
 export const createNote = async (req, res) => {
@@ -19,7 +18,8 @@ export const createNote = async (req, res) => {
 // Get all notes
 export const getAllNotes = async (req, res) => {
     try {
-        const notes = await Note.find();
+        const { isArchived } = req.query;
+        const notes = await Note.find({ isArchived: isArchived || false });
         res.status(200).json(notes);
     } catch (error) {
         res.status(400).json({ message: error.message });

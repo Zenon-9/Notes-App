@@ -8,12 +8,16 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 app.use(express.json());
 
-app.use("/users", UserRoutes);
-app.use("/notes", NoteRoutes);
-app.use("/admin", AdminRoutes);
+app.use("/api/users", UserRoutes);
+app.use("/api/notes", NoteRoutes);
+app.use("/api/admin", AdminRoutes);
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Notes App API');
