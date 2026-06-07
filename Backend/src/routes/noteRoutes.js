@@ -5,10 +5,14 @@ import {
     updateNoteById,
     deleteNoteById
 } from '../controllers/noteController.js';
+import auth from '../middleware/auth.js';
 
 import express from 'express';
 
 const router = express.Router();
+
+// Apply auth middleware to protect all note routes
+router.use(auth);
 
 router.post('/', createNote);
 router.get('/', getAllNotes);

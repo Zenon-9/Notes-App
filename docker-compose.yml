@@ -1,0 +1,38 @@
+services:
+  mongodb:
+    image: mongo:8
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: abc123
+      MONGO_INITDB_DATABASE: mydb
+    volumes:
+      # Reuse the existing database folder so we retain our registered test users/notes
+      - ./Backend/mongo_data:/data/db
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: backend-api
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      # Connect to the mongodb service container instead of localhost
+      - MONGO_URI=mongodb://root:abc123@mongodb:27017/mydb?authSource=admin
+      - JWT_SECRET=super_secret_notes_app_token_signature_key_987654321
+    depends_on:
+      - mongodb
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: frontend-ui
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend

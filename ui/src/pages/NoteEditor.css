@@ -1,0 +1,189 @@
+.note-page {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    animation: fadeIn 0.4s ease;
+    padding: 1rem 0;
+}
+
+.note-form {
+    width: 100%;
+    max-width: 100%;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 6rem);
+}
+
+.note-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 1rem;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.back-btn:hover {
+    color: var(--text-primary);
+}
+
+.editor-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.editor-action-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    color: var(--text-secondary);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 1.1rem;
+}
+
+.editor-action-btn:hover {
+    color: white;
+}
+
+.editor-action-btn.archive:hover {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: var(--accent-secondary);
+    color: var(--accent-secondary);
+}
+
+.editor-action-btn.delete:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: var(--accent-danger);
+    color: var(--accent-danger);
+}
+
+.title-input {
+    border: none;
+    outline: none;
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    padding: 0.5rem 0;
+    color: var(--text-primary);
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-fast);
+}
+
+.title-input:focus {
+    border-bottom-color: var(--border-glass);
+}
+
+.title-input::placeholder {
+    color: var(--text-muted);
+}
+
+.content-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    background: transparent;
+    overflow-y: auto;
+}
+
+.content-input::placeholder {
+    color: var(--text-muted);
+}
+
+.content-input:focus {
+    color: var(--text-primary);
+}
+
+.form-actions-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-glass);
+}
+
+.save-btn {
+    border: none;
+    outline: none;
+    background: var(--accent-primary);
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-glow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.save-btn:hover {
+    background: var(--accent-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+}
+
+.save-btn:active {
+    transform: translateY(0);
+}
+
+.save-btn:disabled {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.editor-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 1rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .note-form {
+        padding: 1.5rem;
+        min-height: 85vh;
+    }
+    .title-input {
+        font-size: 1.8rem;
+    }
+}
